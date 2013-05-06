@@ -3,5 +3,6 @@ language: c
 install:
   - sudo apt-get install mono-devel mono-gmcs nunit-console --fix-missing
 script:
-  - cd RestClientCs && xbuild RestClinetCs.csproj
-  - cd RestClientCs && nunit-console ./tests/FluentMigrator.Tests/bin/Debug/FluentMigra
+  - cd RestClientCs && xbuild RestClientCs.csproj
+  - cd RestClientCs && nunit-console -run=RestClientCs bin/Debug/RestClientCs.dll
+  - cd RestClientCs && cat TestResult.xml

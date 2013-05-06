@@ -9,10 +9,12 @@ namespace RestClientCs
 	public class GeneralTest
 	{	
 
-		const string NOT_FOUND_URL = "http://workspaces.local/UrlNotFound.json";
-		//		const string WORKING_JSON_URL = "https://api.github.com/repos/DracoBlue/RestClientCs";
-		const string WORKING_READONLY_JSON_URL = "http://workspaces.local/RestClientCsReplyAnything.php";
-		const string WORKING_JSON_URL = "http://workspaces.local/RestClientCs.json";
+		const string NOT_FOUND_URL = "https://github.com/repos/DracoBlue/RestClientCsNotFound";
+		// const string NOT_FOUND_URL = "http://workspaces.local/UrlNotFound.json";
+		const string WORKING_READONLY_JSON_URL = "https://api.github.com/repos/DracoBlue/RestClientCs";
+		// const string WORKING_READONLY_JSON_URL = "http://workspaces.local/RestClientCsReplyAnything.php";
+		const string WORKING_JSON_URL = "https://api.github.com/repos/DracoBlue/RestClientCs";
+		// const string WORKING_JSON_URL = "http://workspaces.local/RestClientCs.json";
 		const string WORKING_JSON_STRING_KEY = "name";
 		const string WORKING_JSON_STRING_VALUE = "RestClientCs";
 
