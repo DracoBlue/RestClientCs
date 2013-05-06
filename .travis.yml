@@ -3,6 +3,7 @@ language: c
 install:
   - sudo apt-get install mono-devel mono-gmcs nunit-console --fix-missing
 script:
-  - cd RestClientCs && xbuild RestClientCs.csproj
-  - cd RestClientCs && nunit-console -run=RestClientCs bin/Debug/RestClientCs.dll
-  - cd RestClientCs && cat TestResult.xml
+  - cd RestClientCs
+  - xbuild RestClientCs.csproj
+  - nunit-console -run=RestClientCs bin/Debug/RestClientCs.dll
+  - cat TestResult.xml
