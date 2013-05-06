@@ -105,6 +105,7 @@ namespace RestClientCs
 			request.Method = verb;
 			request.Headers = this.headers;
 			request.Accept = "application/json";
+			request.UserAgent = "RestClientCs 0.1-dev";
 			
 			if (postParameters != null)
 			{
