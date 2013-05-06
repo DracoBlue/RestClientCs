@@ -2,9 +2,8 @@ language: c
  
 install:
   - sudo .travis/setup_travis.sh
+  - .travis/write_local_config.sh
 script:
-  - export TEST_SERVER_URL=http://localhost:8080`pwd`/.travis/echo.php
-  - echo "Using Test Server at: $TEST_SERVER_URL"
   - cd RestClientCs
   - xbuild RestClientCs.csproj
   - nunit-console -run=RestClientCs bin/Debug/RestClientCs.dll

@@ -2,16 +2,22 @@ using System;
 using NUnit.Framework;
 using System.Threading;
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace RestClientCs
 {
 	[TestFixture()]
 	public class GeneralTest
 	{	
+		protected string serverUrl = null;
+
 		[SetUp]
 		public void BeforeTest()
 		{
 			System.Net.ServicePointManager.ServerCertificateValidationCallback += delegate { return true; };
+
+			System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+			serverUrl = (string) config.AppSettings.Settings["TestServerUrl"].Value;
 		}
 
 
@@ -30,7 +36,6 @@ namespace RestClientCs
 		[Test()]
 		public void ValidJsonGetRequest()
 		{
-			string serverUrl = Environment.GetEnvironmentVariable("TEST_SERVER_URL");
 			HttpAgent httpAgent = new HttpAgent(serverUrl + "?_status=200&message=Message");
 			HttpResponse httpResponse = httpAgent.get();
 			Assert.IsInstanceOf<JsonHttpResponse>(httpResponse);
@@ -42,7 +47,6 @@ namespace RestClientCs
 		[Test()]
 		public void NotFoundWithInvalidJson()
 		{
-			string serverUrl = Environment.GetEnvironmentVariable("TEST_SERVER_URL");
 			HttpAgent httpAgent = new HttpAgent(serverUrl + "?_status=404&message=Message");
 			HttpResponse httpResponse = httpAgent.get();
 			Assert.IsInstanceOf<JsonHttpResponse>(httpResponse);
@@ -52,7 +56,6 @@ namespace RestClientCs
 		[Test()]
 		public void PostAgainstAResourceWhichCannotBePosted()
 		{
-			string serverUrl = Environment.GetEnvironmentVariable("TEST_SERVER_URL");
 			HttpAgent httpAgent = new HttpAgent(serverUrl + "?_status=405&message=Method%20not%20allowed");
 			Dictionary<String, String> postParameters = new Dictionary<String, String>();
 			HttpResponse httpResponse = httpAgent.post(postParameters);
