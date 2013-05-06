@@ -18,6 +18,13 @@ namespace RestClientCs
 		const string WORKING_JSON_STRING_KEY = "name";
 		const string WORKING_JSON_STRING_VALUE = "RestClientCs";
 
+		[SetUp]
+		public void BeforeTest()
+		{
+			System.Net.ServicePointManager.ServerCertificateValidationCallback += delegate { return true; };
+		}
+
+
 		[Test()]
 		public void TestGeneral()
 		{
@@ -45,7 +52,7 @@ namespace RestClientCs
 		{
 			HttpAgent httpAgent = new HttpAgent(NOT_FOUND_URL);
 			HttpResponse httpResponse = httpAgent.get();
-			Assert.IsInstanceOf<NotOkHttpResponse>(httpResponse);
+			Assert.IsInstanceOf<JsonHttpResponse>(httpResponse);
 			Assert.AreEqual(httpResponse.isOk(), false);
 		}
 
